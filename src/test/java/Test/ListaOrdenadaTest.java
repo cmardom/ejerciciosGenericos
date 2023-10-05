@@ -2,7 +2,6 @@ package Test;
 
 import org.example.ListaOrdenada;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class ListaOrdenadaTest {
@@ -16,6 +15,7 @@ class ListaOrdenadaTest {
         listaOrdenada.add(221);
         listaOrdenada.add(8);
 
+        //comprobamos elemento y posicion despues de añadir
         Assertions.assertEquals(listaOrdenada.get(0), 1);
         Assertions.assertNotEquals(listaOrdenada.get(0), 123);
 
@@ -30,6 +30,7 @@ class ListaOrdenadaTest {
         listaOrdenada.add(221);
         listaOrdenada.add(8);
 
+        //comprobamos elemento y posicion despues de añadir
 
         Assertions.assertEquals(15, listaOrdenada.get(0));
     }
@@ -43,6 +44,7 @@ class ListaOrdenadaTest {
         listaOrdenada.add(221);
         listaOrdenada.add(8);
 
+        //comprobamos tamaño despues de añadir elementos
         Assertions.assertEquals(3, listaOrdenada.size());
     }
 
@@ -52,6 +54,7 @@ class ListaOrdenadaTest {
         //Creamos lista y añadimos integers
         listaOrdenada = new ListaOrdenada<>();
 
+        //comprobamos que esta vacia
         Assertions.assertEquals(true, listaOrdenada.isEmpty());
     }
 
@@ -66,6 +69,7 @@ class ListaOrdenadaTest {
         listaOrdenada.add(221);
         listaOrdenada.add(8);
 
+        //comprobamos que borra el elemento indicado
         boolean removed = listaOrdenada.remove(123);
         Assertions.assertTrue(removed);
         Assertions.assertEquals(3, listaOrdenada.size());
@@ -78,7 +82,7 @@ class ListaOrdenadaTest {
         listaOrdenada = new ListaOrdenada<>();
         listaOrdenada.add(1);
         listaOrdenada.add(123);
-
+        //comprobamos el indice del elemento indicado
         Assertions.assertEquals(1, listaOrdenada.indexOf(123));
     }
 

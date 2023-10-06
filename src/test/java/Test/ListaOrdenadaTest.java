@@ -2,102 +2,70 @@ package Test;
 
 import org.example.ListaOrdenada;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class ListaOrdenadaTest {
+    ListaOrdenada<Integer> listaOrdenada;
+
+    @BeforeEach
+    void setUp(){
+        //Creamos lista y añadimos integers
+        listaOrdenada = new ListaOrdenada<>();
+        listaOrdenada.add(123);
+        listaOrdenada.add(1);
+        listaOrdenada.add(221);
+        listaOrdenada.add(8);
+    }
+
+
     @Test
+    @DisplayName("Comprobar elemento y posición después de añadir, con add")
     public void addTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-        listaOrdenada.add(123);
-        listaOrdenada.add(1);
-        listaOrdenada.add(221);
-        listaOrdenada.add(8);
-
-        //comprobamos elemento y posicion despues de añadir
-        Assertions.assertEquals(listaOrdenada.get(0), 1);
-        Assertions.assertNotEquals(listaOrdenada.get(0), 123);
+        Assertions.assertEquals(this.listaOrdenada.get(0), 1);
+        Assertions.assertNotEquals(this.listaOrdenada.get(0), 123);
 
     }
 
     @Test
+    @DisplayName("Comprobar elemento y posición después de añadir, con get")
     public void getTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-        listaOrdenada.add(15);
-        listaOrdenada.add(221);
-        listaOrdenada.add(8);
-
-        //comprobamos elemento y posicion despues de añadir
-
-        Assertions.assertEquals(15, listaOrdenada.get(0));
+        Assertions.assertEquals(1, this.listaOrdenada.get(0));
     }
 
     @Test
+    @DisplayName("Comprobar tamaño")
     public void sizeTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-        listaOrdenada.add(15);
-        listaOrdenada.add(221);
-        listaOrdenada.add(8);
-
-        //comprobamos tamaño despues de añadir elementos
-        Assertions.assertEquals(3, listaOrdenada.size());
+        Assertions.assertEquals(4, this.listaOrdenada.size());
     }
 
     @Test
+    @DisplayName("Comprobar que la lista está vacía")
     public void isEmptyTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-
-        //comprobamos que esta vacia
-        Assertions.assertEquals(true, listaOrdenada.isEmpty());
+        Assertions.assertEquals(false, this.listaOrdenada.isEmpty());
     }
 
 
     @Test
+    @DisplayName("Comprobar que se borra el elemento indicado")
     public void removeTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-        listaOrdenada.add(1);
-        listaOrdenada.add(123);
-        listaOrdenada.add(221);
-        listaOrdenada.add(8);
-
-        //comprobamos que borra el elemento indicado
-        boolean removed = listaOrdenada.remove(123);
+        boolean removed = this.listaOrdenada.remove(123);
         Assertions.assertTrue(removed);
-        Assertions.assertEquals(3, listaOrdenada.size());
+        Assertions.assertEquals(3, this.listaOrdenada.size());
     }
 
     @Test
+    @DisplayName("Comprobar el índice del elemento indicado")
     public void indexOfTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-        listaOrdenada.add(1);
-        listaOrdenada.add(123);
-        //comprobamos el indice del elemento indicado
-        Assertions.assertEquals(1, listaOrdenada.indexOf(123));
+        Assertions.assertEquals(2, this.listaOrdenada.indexOf(123));
     }
 
     @Test
+    @DisplayName("Comprobar que el String devuelto es el correcto")
     public void toStringTest(){
-        ListaOrdenada<Integer> listaOrdenada;
-        //Creamos lista y añadimos integers
-        listaOrdenada = new ListaOrdenada<>();
-        listaOrdenada.add(555481);
-
-        String expected = "ListaOrdenada{" +
-                "elementos=[" + listaOrdenada.get(0) +
-                "]}";
-
-        Assertions.assertEquals(expected, listaOrdenada.toString());
+        String expected = "ListaOrdenada{elementos=[1, 8, 123, 221]}";
+        Assertions.assertEquals(expected, this.listaOrdenada.toString());
     }
 
 

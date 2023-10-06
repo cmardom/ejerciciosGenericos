@@ -6,7 +6,10 @@ import java.util.List;
 
 public class ListaOrdenada<E extends Comparable<E>> {
 
-//    Escribe una clase genérica ListaOrdenada con un tipo parametrizado E que sea Comparable… < E extends Comparable<E>>....
+    /**
+     * Clase genérica ListaOrdenada con un tipo parametrizado E que sea Comparable… < E extends Comparable<E>>
+     * @author Carmen
+     */
     private List<E> elementos;
 
     public ListaOrdenada() {
@@ -18,14 +21,22 @@ public class ListaOrdenada<E extends Comparable<E>> {
         this.elementos = elementos;
     }
 
-    //    void add(E o) - nota: cuando añado el elemento debería añadirse en el orden adecuado,
-    //    recuerda que E tiene que implementar Comparable<E>
+
+    /**
+     * Método para añadir un elemento y ordenarlo dentro de la lista
+     * @author Carmen
+     * @param elemento
+     */
     public void add(E elemento) {
         elementos.add(elemento);
         Collections.sort(elementos);
     }
 
-    //    E get(int index)
+    /**
+     * Método para devolver un elemento de la lista a través de su índice. Incluye excepcion outOfBounds
+     * @author Carmen
+     * @param indice
+     */
     public E get(int indice) {
         if (indice < 0 || indice >= elementos.size()) {
             throw new IndexOutOfBoundsException("fuera de rango");
@@ -33,18 +44,27 @@ public class ListaOrdenada<E extends Comparable<E>> {
         return elementos.get(indice);
     }
 
-//    int size()
+    /**
+     * Método wrap para devolver el tamaño de la lista
+     * @author Carmen
+     */
     public int size() {
         return elementos.size();
     }
 
-    //    boolean isEmpty()
-    public boolean isEmpty() {
+    /**
+     * Método wrap para comprobar si la lista está vacía
+     * @author Carmen
+     */    public boolean isEmpty() {
         return elementos.isEmpty();
     }
 
-//    boolean remove(E o)
-    public boolean remove(E elemento) {
+    /**
+     * Método wrap para eliminar un elemento de una lista. Devuelve boolean.
+     * @author Carmen
+     * @param elemento
+     * @return borrado
+     */    public boolean remove(E elemento) {
         boolean borrado = elementos.remove(elemento);
         if (borrado) {
             Collections.sort(elementos); // Reordenar después de borrar
@@ -52,13 +72,20 @@ public class ListaOrdenada<E extends Comparable<E>> {
         return borrado;
     }
 
-//    int indexOf(E o)
-    public int indexOf(E o) {
+    /**
+     * Método wrap para devolver el ídnice de un elemento de la lista
+     * @author Carmen
+     * @param o
+     * @return integer
+     */    public int indexOf(E o) {
         return elementos.indexOf(o);
     }
-//    String toString()
 
-
+    /**
+     * Método Override toString
+     * @author Carmen
+     * @return String
+     */
     @Override
     public String toString() {
         return "ListaOrdenada{" +
